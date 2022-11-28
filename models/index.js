@@ -27,6 +27,7 @@ db.sequelize = sequelize;
 
 db.products = require("./productmodal.js")(sequelize, DataTypes);
 db.reviews = require("./reviewmodal.js")(sequelize, DataTypes);
+db.user = require("./user.js")(sequelize, DataTypes);
 
 db.sequelize.sync({ force: false }).then(() => {
   console.log("Re-sync done");

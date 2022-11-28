@@ -26,9 +26,12 @@ const getAllReviews = async (req, res) => {
 // delete review
 
 const deleteReview = async (req, res) => {
-  let id = req.params.id;
-  const review = await Review.destroy({ where: { id: id } });
-  res.status(200).send("Deleted Successfully");
+  let review = await Review.destroy({
+    where: {
+      id: req.params.id,
+    },
+  });
+  res.status(200).send("Delete Successfully");
 };
 
 module.exports = {

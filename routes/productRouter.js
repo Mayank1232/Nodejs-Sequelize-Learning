@@ -1,5 +1,5 @@
 const productController = require("../controllers/productController");
-
+const passport = require("passport");
 const router = require("express").Router();
 
 // routers for products
@@ -10,7 +10,11 @@ router.get("/allProduct", productController.getAllProducts);
 
 router.get("/published", productController.getPublishedProduct);
 
-router.get("/:id", productController.getProductReviews);
+router.get(
+  "/details/:id",
+  passport.authenticate("jwt", { session: false }),
+  productController.getProductReviews
+);
 
 router.get("/:id", productController.getOneProduct);
 
